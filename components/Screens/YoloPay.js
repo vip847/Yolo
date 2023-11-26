@@ -4,6 +4,7 @@ import tw from 'twrnc';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { faker } from '@faker-js/faker';
+import LinearGradient from 'react-native-linear-gradient';
 
 var cardData = [
     {
@@ -50,7 +51,7 @@ const ShowCard = () => cardData.map((item, key) => {
 
 const CustomButton = ({ text, color }) => {
     return (
-        <Pressable style={[tw`h-10 ml-2 w-[70px] justify-center`, { borderTopWidth: 1.5, borderLeftWidth: 0.7, borderRightWidth: 0.7, borderBottomWidth: 0, borderRadius: 100, borderColor: `${color}` }]}>
+        <Pressable style={[tw`h-10 ml-2 w-[30%] justify-center`, { borderTopWidth: 1.5, borderLeftWidth: 0.7, borderRightWidth: 0.7, borderBottomWidth: 0, borderRadius: 100, borderColor: `${color}` }]}>
             <Text style={[tw`text-[20px]  text-center`, { color: `${color}` }]}>{text}</Text>
         </Pressable>
     )
@@ -73,7 +74,14 @@ const YoloPay = () => {
                 {
                     isFreeze ?
                         <View style={tw`flex-row items-center`}>
-                            <Image source={require('../../assets/images/freeze.jpg')} style={tw`h-[300px] w-[60%] rounded-[30px]`} />
+                            <LinearGradient
+                                colors={['white', '#EBE3D5', 'gray', 'rgba(20,20,20,0.7)', 'gray', '#EBE3D5', 'white']}
+                                start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                                locations={[0, 0.01, 0.07, 0.5, 0.93, 0.99, 1]}
+                                style={tw`h-[330px] w-[60%] rounded-[30px]`}
+                            >
+                                <Image source={require('../../assets/images/freeze.jpg')} style={tw`h-[330px] w-[100%] rounded-[30px] opacity-20`} />
+                            </LinearGradient>
                             <TouchableOpacity onPress={() => setIsFreeze(!isFreeze)} style={tw`ml-3`}>
                                 <View style={tw`w-[60px] h-60px justify-center items-center border-t-[1px] border-l-[0.7px] border-r-[0.7px] border-b-[0px] border-red-900 rounded-[99]`}>
                                     <Ionicon style={tw``} name='snow' color={'red'} size={30} />
